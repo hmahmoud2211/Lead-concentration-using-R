@@ -54,3 +54,4 @@ ggplot(lead, aes(x = Ld73_factor, y = MAXFWT)) +
   geom_boxplot() +
   labs(title = "Boxplot of MAXFWT by Ld73 Levels", x = "Ld73 (Quantiles)", y = "MAXFWT") +
   theme_minimal()
+
