@@ -1,57 +1,66 @@
-# Load required package
-library(ggplot2)
-
 # Bar chart of Sex
-ggplot(lead, aes(x = Sex)) +
-  geom_bar() +
-  labs(title = "Bar Chart of Gender", x = "Sex", y = "Count") +
-  theme_minimal()
+barplot(table(lead$Sex),
+        main = "Bar Chart of Gender",
+        xlab = "Sex",
+        ylab = "Count",
+        col = "lightblue")
 
 # Bar chart of mean MAXFWT by Sex
-mean_maxfwt <- lead %>%
-  group_by(Sex) %>%
-  summarise(Mean_MAXFWT = mean(MAXFWT, na.rm = TRUE))
-ggplot(mean_maxfwt, aes(x = Sex, y = Mean_MAXFWT)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Mean MAXFWT by Gender", x = "Sex", y = "Mean MAXFWT") +
-  theme_minimal()
+mean_maxfwt <- tapply(lead$MAXFWT, lead$Sex, mean, na.rm = TRUE)
+barplot(mean_maxfwt,
+        main = "Mean MAXFWT by Gender",
+        xlab = "Sex",
+        ylab = "Mean MAXFWT",
+        col = "lightgreen")
 
 # Histogram of Age
-ggplot(lead, aes(x = Age)) +
-  geom_histogram(bins = 30, fill = "blue", alpha = 0.5) +
-  labs(title = "Histogram of Age", x = "Age", y = "Count") +
-  theme_minimal()
+hist(lead$Age,
+     breaks = 30,
+     main = "Histogram of Age",
+     xlab = "Age",
+     col = rgb(0,0,1,0.5))
 
 # Histogram of MAXFWT
-ggplot(lead, aes(x = MAXFWT)) +
-  geom_histogram(bins = 30, fill = "green", alpha = 0.5) +
-  labs(title = "Histogram of MAXFWT", x = "MAXFWT", y = "Count") +
-  theme_minimal()
+hist(lead$MAXFWT,
+     breaks = 30,
+     main = "Histogram of MAXFWT",
+     xlab = "MAXFWT",
+     col = rgb(0,1,0,0.5))
 
 # Scatterplot of Ld72 vs MAXFWT with regression lines by Sex
-ggplot(lead, aes(x = Ld72, y = MAXFWT, color = Sex)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Scatterplot of Ld72 vs MAXFWT by Gender", x = "Ld72", y = "MAXFWT") +
-  theme_minimal()
+plot(lead$Ld72, lead$MAXFWT,
+     col = as.numeric(lead$Sex),
+     pch = 19,
+     main = "Scatterplot of Ld72 vs MAXFWT by Gender",
+     xlab = "Ld72",
+     ylab = "MAXFWT")
+legend("topright", legend = levels(lead$Sex), col = 1:2, pch = 19)
+# Add regression lines by Sex
+for (s in levels(lead$Sex)) {
+  idx <- lead$Sex == s
+  abline(lm(MAXFWT ~ Ld72, data = lead[idx, ]), col = which(levels(lead$Sex) == s))
+}
+
 
 # Boxplot of Age
-ggplot(lead, aes(y = Age)) +
-  geom_boxplot() +
-  labs(title = "Boxplot of Age", y = "Age") +
-  theme_minimal()
+boxplot(lead$Age,
+        main = "Boxplot of Age",
+        ylab = "Age",
+        col = "orange")
 
 # Boxplot of MAXFWT by Ld72 (as factor)
 lead$Ld72_factor <- as.factor(cut(lead$Ld72, breaks = quantile(lead$Ld72, na.rm = TRUE)))
-ggplot(lead, aes(x = Ld72_factor, y = MAXFWT)) +
-  geom_boxplot() +
-  labs(title = "Boxplot of MAXFWT by Ld72 Levels", x = "Ld72 (Quantiles)", y = "MAXFWT") +
-  theme_minimal()
+boxplot(MAXFWT ~ Ld72_factor, data = lead,
+        main = "Boxplot of MAXFWT by Ld72 Levels",
+        xlab = "Ld72 (Quantiles)",
+        ylab = "MAXFWT",
+        col = "pink")
 
 # Boxplot of MAXFWT by Ld73 (as factor)
 lead$Ld73_factor <- as.factor(cut(lead$Ld73, breaks = quantile(lead$Ld73, na.rm = TRUE)))
-ggplot(lead, aes(x = Ld73_factor, y = MAXFWT)) +
-  geom_boxplot() +
-  labs(title = "Boxplot of MAXFWT by Ld73 Levels", x = "Ld73 (Quantiles)", y = "MAXFWT") +
-  theme_minimal()
+boxplot(MAXFWT ~ Ld73_factor, data = lead,
+        main = "Boxplot of MAXFWT by Ld73 Levels",
+        xlab = "Ld73 (Quantiles)",
+        ylab = "MAXFWT",
+        col = "lightgray")
 

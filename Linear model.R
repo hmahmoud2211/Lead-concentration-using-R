@@ -18,3 +18,4 @@ cat("Estimated MAXFWT Reduction at Ld73 = 100 μg/100 ml:", reduction, "\n")
 
 # Interpretation
 cat("Interpretation: The slope represents the change in MAXFWT per unit increase in Ld73. A negative slope suggests higher lead levels reduce MAXFWT. The 95% CI indicates the range of plausible slope values. The reduction at Ld73 = 100 estimates the expected decrease in MAXFWT compared to Ld73 = 0.\n")
+

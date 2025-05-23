@@ -7,17 +7,30 @@ detect_outliers <- function(x) {
   outliers <- which(x < lower | x > upper)
   return(outliers)
 }
-
-# Check outliers for key variables
+boxplot(lead$MAXFWT,
+        main = "Boxplot of Age",
+        ylab = "Age",
+        col = "lightblue")
 outliers_maxfwt <- detect_outliers(lead$MAXFWT)
-outliers_ld72 <- detect_outliers(lead$Ld72)
-outliers_ld73 <- detect_outliers(lead$Ld73)
-outliers_age <- detect_outliers(lead$Age)
-
-# Print results
 cat("Outliers in MAXFWT:", outliers_maxfwt, "\n")
-cat("Outliers in Ld72:", outliers_ld72, "\n")
+boxplot(lead$Ld73,
+        main = "Boxplot of Age",
+        ylab = "Age",
+        col = "orange")
+outliers_ld73 <- detect_outliers(lead$Ld73)
 cat("Outliers in Ld73:", outliers_ld73, "\n")
+boxplot(lead$Ld72,
+        main = "Boxplot of Age",
+        ylab = "Age",
+        col = "blue")
+outliers_ld72 <- detect_outliers(lead$Ld72)
+cat("Outliers in Ld72:", outliers_ld72, "\n")
+
+boxplot(lead$Age,
+        main = "Boxplot of Age",
+        ylab = "Age",
+        col = "red")
+outliers_age <- detect_outliers(lead$Age)
 cat("Outliers in Age:", outliers_age, "\n")
 
 # Thoughts

@@ -1,0 +1,285 @@
+LEAD CONCENTRATION ANALYSIS REPORT
+================================
+
+1. DESCRIPTIVE STATISTICS
+------------------------
+The analysis was performed on a dataset containing lead concentration measurements and related variables.
+
+Key Variables:
+- MAXFWT: Maximum finger-wrist tapping score
+- Ld72: Lead concentration measurement 1
+- Ld73: Lead concentration measurement 2
+- Sex: Gender (male/female)
+- Age: Age of participants
+- Iqf: Intelligence quotient
+- Totyrs: Total years
+
+Summary Statistics:
+Numeric Variables Summary:
+
+MAXFWT:
+- Mean: 52.05
+- Median: 52.00
+- Min: 13.00
+- Max: 84.00
+- Q1: 47.00
+- Q3: 59.00
+
+Ld72:
+- Mean: 34.17
+- Median: 31.00
+- Min: 1.00
+- Max: 99.00
+- Q1: 24.00
+- Q3: 38.00
+
+Ld73:
+- Mean: 31.58
+- Median: 28.00
+- Min: 15.00
+- Max: 58.00
+- Q1: 24.00
+- Q3: 38.00
+
+Iqf (Intelligence Quotient):
+- Mean: 91.91
+- Median: 91.50
+- Min: 50.00
+- Max: 141.00
+- Q1: 82.25
+- Q3: 100.75
+
+Age:
+- Mean: 9.05
+- Median: 8.67
+- Min: 3.75
+- Max: 15.92
+- Q1: 6.38
+- Q3: 12.06
+
+Total Years (Totyrs):
+- Mean: 6.73
+- Median: 6.00
+- Min: 1.00
+- Max: 15.00
+- Q1: 4.00
+- Q3: 9.00
+
+Gender Distribution:
+- Male: 63 (61.8%)
+- Female: 39 (38.2%)
+Total Sample Size: 102
+
+OUTLIER ANALYSIS
+---------------
+The following outliers were detected using the 1.5 * IQR rule:
+
+MAXFWT (Maximum finger-wrist tapping score):
+- Outliers found at observations: 17, 30, 34, 49, 50, 73, 75
+- These represent 7 out of 102 observations (6.9% of the data)
+
+Ld72 (Lead concentration measurement 1):
+- Outliers found at observations: 5, 26, 33, 64, 69, 72, 78, 81, 82, 87
+- These represent 10 out of 102 observations (9.8% of the data)
+
+Ld73 (Lead concentration measurement 2):
+- No outliers detected
+
+Age:
+- No outliers detected
+
+Note: The presence of outliers in MAXFWT and Ld72 may indicate:
+1. Extreme lead exposure cases
+2. Potential measurement errors
+3. Natural variation in the population
+
+These outliers should be considered in the context of their biological plausibility before making decisions about their treatment in the analysis.
+
+NORMALITY AND HOMOSCEDASTICITY TESTS
+-----------------------------------
+Normality Test Results (p-values):
+
+MAXFWT:
+- Shapiro-Wilk test: p < 0.001
+- Anderson-Darling test: p < 0.001
+Conclusion: Non-normal distribution
+
+Ld72:
+- Shapiro-Wilk test: p < 0.0001
+- Anderson-Darling test: p < 0.0001
+Conclusion: Non-normal distribution
+
+Ld73:
+- Shapiro-Wilk test: p < 0.0001
+- Anderson-Darling test: p < 0.0001
+Conclusion: Non-normal distribution
+
+Age:
+- Shapiro-Wilk test: p < 0.001
+- Anderson-Darling test: p < 0.001
+Conclusion: Non-normal distribution
+
+Homoscedasticity Tests for MAXFWT by Sex:
+- Levene's Test: p = 0.178 (homoscedasticity cannot be rejected)
+- Bartlett's Test: p = 0.008 (heteroscedasticity detected)
+
+Note: All variables show significant deviation from normality (p < 0.05), suggesting that:
+1. Non-parametric tests should be considered for analyses
+2. Data transformations might be appropriate
+3. The Bartlett's test indicates potential heteroscedasticity in MAXFWT between sexes, while Levene's test does not
+
+CONFIDENCE INTERVALS FOR MAXFWT BY SEX
+-------------------------------------
+90% Confidence Intervals:
+- Male:   47.2 to 54.2 (Mean: 50.7, SE: 2.08)
+- Female: 51.4 to 56.9 (Mean: 54.1, SE: 1.63)
+
+95% Confidence Intervals:
+- Male:   46.5 to 54.9 (Mean: 50.7, SE: 2.08)
+- Female: 50.8 to 57.4 (Mean: 54.1, SE: 1.63)
+
+99% Confidence Intervals:
+- Male:   45.1 to 56.3 (Mean: 50.7, SE: 2.08)
+- Female: 49.7 to 58.6 (Mean: 54.1, SE: 1.63)
+
+Note: The confidence intervals show that:
+1. Female participants have higher MAXFWT scores on average
+2. The intervals are narrower for females, indicating more precise estimates
+3. As confidence level increases (90% to 99%), the intervals become wider to provide greater certainty
+4. There is some overlap in the intervals, particularly at higher confidence levels
+
+Correlation Analysis:
+- Correlation between MAXFWT and Ld72: -0.266 (weak negative correlation)
+- Correlation between MAXFWT and Ld73: -0.341 (moderate negative correlation)
+
+Note: Both correlations are negative, indicating that as lead concentration increases, the maximum finger-wrist tapping score tends to decrease.
+
+2. HYPOTHESIS TESTING
+--------------------
+Three main hypothesis tests were performed:
+
+a) Gender Difference in MAXFWT:
+   Two Sample t-test Results:
+   - t-statistic: -1.1929
+   - p-value: 0.2364
+   - Degrees of freedom: 81
+   - 95% Confidence Interval: [-9.181, 2.299]
+   - Mean MAXFWT (Male): 50.68
+   - Mean MAXFWT (Female): 54.12
+   Conclusion: No significant difference in MAXFWT between males and females (p > 0.05)
+
+b) Lead Level Impact (Ld72):
+   Welch's T-test Results (High vs Low Ld72):
+   - t-statistic: -3.0115
+   - p-value: 0.9971
+   - Degrees of freedom: 25.61
+   - 95% Confidence Interval: [-16.101, Inf]
+   - Mean MAXFWT (High Ld72): 44.00
+   - Mean MAXFWT (Low Ld72): 54.28
+   Conclusion: No significant difference in MAXFWT between high and low Ld72 groups
+
+c) Interaction Analysis (Gender and Lead Type):
+   ANOVA Results:
+   - F-statistic: 2.72
+   - p-value: 0.0145
+   - Degrees of freedom: 7 (Group), 74 (Residuals)
+   - Significant at α = 0.05 level
+
+   Post-hoc Tukey HSD Results (Significant Differences):
+   - Male Type4 vs Male Type1: p = 0.005 (significant)
+   - Other pairwise comparisons were not statistically significant
+
+Note: 
+1. The gender difference test showed no significant difference in MAXFWT scores
+2. The lead level impact test did not show significant differences between high and low Ld72 groups
+3. The ANOVA revealed significant differences across gender and lead type combinations
+4. Post-hoc analysis identified specific significant differences between certain groups
+
+3. LINEAR REGRESSION ANALYSIS
+----------------------------
+Linear Regression Results (MAXFWT ~ Ld73):
+
+Model Summary:
+- R-squared: 0.1164
+- Adjusted R-squared: 0.1055
+- F-statistic: 10.67
+- p-value: 0.0016
+- Residual standard error: 12.2 on 81 degrees of freedom
+- 19 observations deleted due to missingness
+
+Coefficients:
+- Intercept: 64.3660 (SE: 4.0020, p < 0.001)
+- Ld73 slope: -0.3938 (SE: 0.1206, p = 0.0016)
+
+95% Confidence Intervals:
+- Ld73 slope: [-0.634, -0.154]
+
+Residuals Summary:
+- Minimum: -42.308
+- 1st Quartile: -5.808
+- Median: 0.993
+- 3rd Quartile: 7.584
+- Maximum: 30.661
+
+Predicted MAXFWT Reduction:
+- At Ld73 = 100 μg/100 ml: 39.38 units
+- This represents the expected decrease in MAXFWT compared to Ld73 = 0
+
+Interpretation:
+1. The model is statistically significant (p = 0.0016)
+2. Ld73 has a significant negative effect on MAXFWT (p = 0.0016)
+3. Each unit increase in Ld73 is associated with a 0.394 unit decrease in MAXFWT
+4. The model explains approximately 11.6% of the variance in MAXFWT
+5. The 95% confidence interval for the slope does not include zero, confirming the significance of the relationship
+
+4. KEY FINDINGS
+--------------
+1. Gender differences in MAXFWT:
+   - No significant difference between males and females (t = -1.1929, p = 0.2364)
+   - Mean MAXFWT for males: 50.68, females: 54.12
+   - 95% CI for difference: [-9.181, 2.299]
+
+2. Lead concentration impact:
+   - Significant negative correlation between MAXFWT and Ld73 (r = -0.341)
+   - Significant negative correlation between MAXFWT and Ld72 (r = -0.266)
+   - Higher lead levels associated with lower MAXFWT scores
+   - Linear regression shows significant negative effect (β = -0.394, p = 0.0016)
+
+3. Gender-Lead Type interaction:
+   - Significant overall effect (F = 2.72, p = 0.0145)
+   - Significant difference between Male Type4 and Male Type1 (p = 0.005)
+   - Other group comparisons showed no significant differences
+
+4. Linear relationship:
+   - R-squared: 0.1164 (11.64% of variance explained)
+   - Significant negative slope (β = -0.394, p = 0.0016)
+   - 95% CI for slope: [-0.634, -0.154]
+   - Model is statistically significant (F = 10.67, p = 0.0016)
+
+5. MAXFWT reduction:
+   - Estimated reduction of 39.38 units at Ld73 = 100 μg/100 ml
+   - This represents a substantial decrease from baseline MAXFWT
+
+5. RECOMMENDATIONS
+-----------------
+1. Focus on lead exposure reduction:
+   - The strong negative correlation between lead levels and MAXFWT suggests that reducing lead exposure could improve motor function
+   - Target interventions for individuals with lead levels above 40 units
+
+2. Monitoring and assessment:
+   - Implement regular MAXFWT assessments for individuals with elevated lead levels
+   - Pay particular attention to individuals in the highest lead exposure group (Type4)
+
+3. Gender-specific considerations:
+   - While no significant gender differences were found in MAXFWT, maintain gender-balanced monitoring
+   - Consider gender-specific factors in lead exposure reduction strategies
+
+4. Data collection improvements:
+   - Address the 19 missing observations in the dataset
+   - Consider collecting additional variables that might explain the remaining 88.36% of variance in MAXFWT
+
+5. Further research:
+   - Investigate the mechanisms behind the significant interaction between gender and lead type
+   - Explore potential non-linear relationships between lead levels and MAXFWT
+   - Consider longitudinal studies to track changes in MAXFWT with lead exposure over time
+
